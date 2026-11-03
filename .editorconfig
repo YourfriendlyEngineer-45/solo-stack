@@ -1,0 +1,42 @@
+root = true
+
+[*.{designer,g.cs,generated.cs}]
+generated_code = true
+dotnet_analyzer_diagnostic.severity = none
+
+[*.{cs,vb}]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+insert_final_newline = true
+
+# --- NetAnalyzers severity for BUSINESS ---
+dotnet_analyzer_diagnostic.category-Security.severity = warning
+dotnet_analyzer_diagnostic.category-Reliability.severity = warning
+dotnet_analyzer_diagnostic.category-Usage.severity = warning
+dotnet_analyzer_diagnostic.category-Correctness.severity = warning
+
+dotnet_analyzer_diagnostic.category-Performance.severity = suggestion
+dotnet_analyzer_diagnostic.category-Design.severity = suggestion
+dotnet_analyzer_diagnostic.category-Naming.severity = suggestion
+
+dotnet_analyzer_diagnostic.category-Documentation.severity = none
+dotnet_analyzer_diagnostic.category-Globalization.severity = none
+dotnet_analyzer_diagnostic.category-Interoperability.severity = none
+dotnet_analyzer_diagnostic.category-Maintainability.severity = none
+
+# Real crashes -> keep
+dotnet_diagnostic.CA1062.severity = warning  # null check
+dotnet_diagnostic.CA2000.severity = warning  # dispose leak - #1 server memory leak
+dotnet_diagnostic.CA2213.severity = warning  # disposable not disposed
+dotnet_diagnostic.CA2012.severity = warning  # misused ValueTask
+dotnet_diagnostic.CA2007.severity = none     # ConfigureAwait - disable for modern .NET
+dotnet_diagnostic.CA2100.severity = error    # SQL injection
+dotnet_diagnostic.CA3001.severity = error    # SQL injection review
+
+# Noisy for business apps -> off
+dotnet_diagnostic.CA1031.severity = none     # catch general exception - needed in business code
+dotnet_diagnostic.CA1303.severity = none     # Don't pass literals as localized
+dotnet_diagnostic.CA1014.severity = none
+dotnet_diagnostic.CA1024.severity = none
