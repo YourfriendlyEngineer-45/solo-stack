@@ -13,8 +13,9 @@ What's inside?
 - `.github/workflows/build.yml` - blocks PRs with bugs
 
 How to use in PRoot Ubuntu:
+```bash
 dotnet build
-
+```
 If you see CS8600/CS8602 error, that's good. It just saved you from NullReference at 3am.
 
 Built by a solopreneur in Las Pinas who was tired of community mess.
